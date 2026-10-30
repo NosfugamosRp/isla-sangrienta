@@ -1,0 +1,9 @@
+{
+  "name": "isla-jurasica-discord-bot",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {"node": ">=22.12.0"},
+  "scripts": {"start": "node scripts/discord-community.mjs"},
+  "dependencies": {"discord.js": "14.27.0"}
+}

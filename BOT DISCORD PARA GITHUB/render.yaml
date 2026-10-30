@@ -1,0 +1,25 @@
+# Creates only the Discord bot. It does not deploy or modify the Netlify website.
+# Paid worker and disk: review Render's quoted cost before applying.
+services:
+  - type: worker
+    name: isla-jurasica-discord
+    runtime: docker
+    region: frankfurt
+    plan: 0.5c-512mb
+    numInstances: 1
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    autoDeployTrigger: off
+    disk:
+      name: discord-state
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: DISCORD_DATA_DIR
+        value: /data/discord
+      - key: DISCORD_SETUP_GUILD_ID
+        sync: false
+      - key: DISCORD_SETUP_BOT_TOKEN
+        sync: false
+      - key: DISCORD_BOOTSTRAP_STATE
+        sync: false
